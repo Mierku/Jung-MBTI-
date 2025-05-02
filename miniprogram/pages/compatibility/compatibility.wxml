@@ -1,0 +1,73 @@
+<view class="compatibility-container">
+  <view class="header">
+    <view class="title">缘分配对</view>
+  </view>
+
+  <view class="form-container">
+    <!-- 我的MBTI类型 -->
+    <view class="form-item">
+      <view class="form-label">我的MBTI类型</view>
+      <view class="type-selector">
+        <picker style="width: 100%;" bindchange="changeMyType" value="{{myTypeIndex}}" range="{{mbtiTypesList}}">
+          <view class="picker-content">
+            <view class="selected-type">{{myType || '请选择'}}</view>
+            <view class="picker-arrow">↓</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 对方MBTI类型 -->
+    <view class="form-item">
+      <view class="form-label">对方MBTI类型</view>
+      <view class="type-selector">
+        <picker style="width: 100%;" bindchange="changePartnerType" value="{{partnerTypeIndex}}" range="{{mbtiTypesList}}">
+          <view class="picker-content">
+            <view class="selected-type">{{partnerType || '请选择'}}</view>
+            <view class="picker-arrow">▼</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 分析按钮 -->
+    <button class="analyze-btn" bindtap="analyzeCompatibility" disabled="{{!myType || !partnerType}}">开始分析</button>
+  </view>
+
+  <!-- 分析结果区域 -->
+  <view class="result-section" wx:if="{{showResult}}">
+    <view class="result-header">
+      <view class="result-types">
+        <view class="my-type">{{myType}}</view>
+        <view class="compatibility-score">{{compatibilityScore}}%</view>
+        <view class="partner-type">{{partnerType}}</view>
+      </view>
+    </view>
+
+    <!-- 匹配度图表 -->
+    <view class="compatibility-chart">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{compatibilityScore}}%;"></view>
+      </view>
+      <view class="compatibility-label">{{compatibilityLevel}}</view>
+    </view>
+
+    <!-- 分析详情 -->
+    <view class="compatibility-details">
+      <view class="detail-title">匹配分析</view>
+      <view class="detail-content">{{compatibilityDescription}}</view>
+    </view>
+
+    <!-- 相处建议 -->
+    <view class="compatibility-advice">
+      <view class="detail-title">相处建议</view>
+      <view class="detail-content">{{compatibilityAdvice}}</view>
+    </view>
+
+    <!-- 潜在挑战 -->
+    <view class="compatibility-challenges">
+      <view class="detail-title">潜在挑战</view>
+      <view class="detail-content">{{compatibilityChallenges}}</view>
+    </view>
+  </view>
+</view>

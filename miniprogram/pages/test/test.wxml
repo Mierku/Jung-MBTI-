@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <text class="title">MBTI测试</text>
+  </view>
+
+
+  <!-- 主要内容区域 -->
+  <view class="content-area">
+    <!-- 进度条 -->
+    <view class="progress-bar">
+      <view class="progress-bg"></view>
+      <view class="progress" style="width: {{progress}}%"></view>
+      <text class="progress-text">{{currentQuestion + 1}}/{{totalQuestions}}</text>
+    </view>
+
+    <!-- 问题卡片 -->
+    <view class="question-container" wx:if="{{questions && questions.length > 0 && currentQuestion < questions.length}}">
+      <view class="question-card">
+        <text class="question-text">{{questions[currentQuestion].text}}</text>
+      </view>
+
+      <!-- 选项列表 -->
+      <view class="options-container">
+        <block wx:for="{{options}}" wx:key="value">
+          <view class="option-item {{answers[currentQuestion] && answers[currentQuestion].value === item.value ? 'selected' : ''}}" bindtap="selectOption" data-value="{{item.value}}">
+            <text class="option-text">{{item.text}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 错误提示 -->
+    <view class="question-error" wx:else>
+      <text>加载问题失败，请重新进入测试</text>
+      <button bindtap="onLoad" class="retry-btn">重试</button>
+    </view>
+  </view>
+
+  <!-- 导航按钮 -->
+  <view class="navigation-buttons">
+    <button class="prev-btn" bindtap="prevQuestion" disabled="{{currentQuestion === 0}}">
+      <view class="btn-icon prev-icon"></view>
+    </button>
+    <!-- 添加辅助完成按钮，仅在最后一题且已回答时显示 -->
+    <button wx:if="{{currentQuestion === totalQuestions - 1 && answers[currentQuestion]}}" class="finish-helper-btn" bindtap="autoFinishTest">
+      提交结果
+    </button>
+    <!-- 始终显示下一题按钮，但根据条件禁用 -->
+    <button class="next-btn" bindtap="nextQuestion" disabled="{{!answers[currentQuestion] || currentQuestion >= totalQuestions - 1}}">
+      <view class="btn-icon next-icon"></view>
+    </button>
+  </view>
+</view>

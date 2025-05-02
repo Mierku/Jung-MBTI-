@@ -1,0 +1,115 @@
+<view class="container">
+  <view class="first-section">
+    <view class="header"></view>
+    <view class="type-top">
+      <view class="type-header">
+        <text class="type-fullName">{{ typeFullName }}</text>
+        <text class="type-value" style="color:{{typeColors.text}}">{{mbtiResult.type}}</text>
+        <text class="type-data" style="color:rgb(32, 32, 32);font-size: 24rpx;">全球仅<text style="color:red; font-weight: 600;font-size: 32rpx;">{{populationPercentage}}%</text></text>
+      </view>
+
+    </view>
+    <view class=" circle" style="background: {{typeColors.circle}} ;" />
+    <mbti-icon src="{{mbtiResult.type}}" mbti-icon="mbti-icon" />
+
+    <!-- // 认知功能 -->
+    <view class="all-dimensions">
+      <text class="section-title">认知功能</text>
+      <view class="dimension-item">
+        <text class="dimension-name">Ne (外倾直觉)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Ne || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Ne' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Ne}}%;">{{rawScores.Ne || 0}}</text>
+        </view>
+      </view>
+
+      <view class="dimension-item">
+        <text class="dimension-name">Ni (内倾直觉)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Ni || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Ni' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Ni}}%;">{{rawScores.Ni || 0}}</text>
+        </view>
+      </view>
+
+      <view class="dimension-item">
+        <text class="dimension-name">Se (外倾感觉)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Se || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Se' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Se}}%;">{{rawScores.Se || 0}}</text>
+        </view>
+      </view>
+
+      <view class="dimension-item">
+        <text class="dimension-name">Si (内倾感觉)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Si || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Si' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Si}}%;">{{rawScores.Si || 0}}</text>
+        </view>
+      </view>
+
+      <view class="dimension-item">
+        <text class="dimension-name">Te (外倾思维)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Te || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Te' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Te}}%;">{{rawScores.Te || 0}}</text>
+        </view>
+      </view>
+
+      <view class="dimension-item">
+        <text class="dimension-name">Ti (内倾思维)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Ti || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Ti' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Ti}}%;">{{rawScores.Ti || 0}}</text>
+        </view>
+      </view>
+
+      <view class="dimension-item">
+        <text class="dimension-name">Fe (外倾情感)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Fe || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Fe' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Fe}}%;">{{rawScores.Fe || 0}}</text>
+        </view>
+      </view>
+
+      <view class="dimension-item">
+        <text class="dimension-name">Fi (内倾情感)</text>
+        <view class="progress-container">
+          <progress percent="{{functionScores.Fi || 0}}" stroke-width="18" border-radius="9" activeColor="{{typeColors.maxFunction === 'Fi' ? typeColors.maxProgress : typeColors.progress}}" />
+          <text class="progress-score" style="right: {{100 - functionScores.Fi}}%;">{{rawScores.Fi || 0}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- // 性格标签 -->
+    <view class="personality-tags section">
+
+      <view class="tags-container">
+        <view wx:for="{{typeColors.personality}}" wx:key="index" class="tag-item" style="background-color: {{typeColors.primary}};">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+
+
+
+  </view>
+  <!-- // 简短描述 -->
+  <view class="type-desc-box" style="background: {{typeColors.back}}">
+    <view class="box-clip" style="background: {{typeColors.back}}" />
+    <view class="character-title">
+      <text style="color: white">{{ mbtiResult.type }}</text>
+    </view>
+
+    <view class="character-desc">你是{{mbtiShortDesc}}</view>
+
+  </view>
+
+  <!-- 隐藏的Canvas元素用于生成分享图片 -->
+  <canvas type="2d" id="shareCanvas" style="width: 600px; height: 1300px; position: fixed; top: -9999px; left: -9999px;"></canvas>
+</view>
+
+<!-- 底部导航栏 -->
+<view class="footer-bar">
+  <button class="footer-btn detail-btn" bindtap="goToDetailReport" style="background-color: {{typeColors.primary}}; color: #fff;">深度报告</button>
+  <button class="footer-btn share-btn" bindtap="shareResult" data-type="mbti">分享结果</button>
+</view>

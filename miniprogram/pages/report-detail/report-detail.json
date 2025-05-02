@@ -1,0 +1,6 @@
+{
+	"usingComponents": {
+		"mbti-icon": "/components/mbti-icon/mbti-icon"
+	},
+	"navigationBarTitleText": "MBTI完整报告"
+}

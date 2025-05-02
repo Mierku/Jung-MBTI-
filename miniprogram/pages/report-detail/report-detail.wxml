@@ -1,0 +1,251 @@
+<view class="container" style="--tab-active-color: {{typeColors.primary}}; --tab-active-color-rgb: {{typeColors.primaryRgb || '160, 80, 226'}};">
+  <view class="header">
+    <view class="type-info">
+      <view class="type-text">
+        <text class="type-fullName">{{typeFullName}}</text>
+        <text class="type-value" style="color:{{typeColors.primary}}">{{mbtiResult.type}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{activeTab === 'overview' ? 'active' : ''}}" bindtap="switchTab" data-tab="overview">
+      概览
+    </view>
+    <view class="tab {{activeTab === 'cognitive' ? 'active' : ''}}" bindtap="switchTab" data-tab="cognitive">
+      认知功能
+    </view>
+    <view class="tab {{activeTab === 'career' ? 'active' : ''}}" bindtap="switchTab" data-tab="career">
+      职业发展
+    </view>
+    <view class="tab {{activeTab === 'relations' ? 'active' : ''}}" bindtap="switchTab" data-tab="relations">
+      人际关系
+    </view>
+    <view class="tab-line" style="transform: translateX({{tabLineLeft}}px);"></view>
+  </view>
+
+  <view class="content-area">
+    <!-- 概览 -->
+    <view class="section" wx:if="{{activeTab === 'overview'}}">
+      <view class="section-card">
+        <text class="section-title">性格概述</text>
+        <view class="section-content">
+          <text class="highlight-text">{{typeHighlight}}</text>
+          <text class="normal-text">{{typeDescription}}</text>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <text class="section-title">核心特点</text>
+        <view class="section-content traits-list">
+          <view class="trait-item" wx:for="{{typeTraits}}" wx:key="index">
+            <text class="trait-title">{{item.title}}</text>
+            <text class="trait-desc">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <text class="section-title">优势与劣势</text>
+        <view class="pros-cons">
+          <view class="pros">
+            <text class="sub-title">优势</text>
+            <view class="list">
+              <view class="list-item" wx:for="{{typeStrengths}}" wx:key="index">{{item}}</view>
+            </view>
+          </view>
+          <view class="cons">
+            <text class="sub-title">劣势</text>
+            <view class="list">
+              <view class="list-item" wx:for="{{typeWeaknesses}}" wx:key="index">{{item}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 认知功能 -->
+    <view class="section" wx:if="{{activeTab === 'cognitive'}}">
+      <view class="section-card">
+        <text class="section-title">认知功能堆栈</text>
+        <view class="stack-description">
+          <text>每种MBTI类型都有独特的认知功能堆栈，决定了信息处理与决策方式</text>
+        </view>
+
+        <view class="function-stack">
+          <view class="primary-functions">
+            <view class="stack-item" wx:for="{{cognitiveFunctions}}" wx:key="index" wx:if="{{index < 4}}">
+              <view class="stack-position">
+                <text class="position-label">{{item.position}}</text>
+                <text class="position-title">{{item.title}}</text>
+              </view>
+              <view class="stack-detail">
+                <text class="function-name">{{item.function}}</text>
+                <text class="function-desc">{{item.description}}</text>
+              </view>
+            </view>
+          </view>
+          
+          <view class="functions-divider" bindtap="toggleShowAllFunctions">
+            <text>{{showAllFunctions ? '收起' : '查看更多功能'}}</text>
+            <view class="divider-arrow {{showAllFunctions ? 'up' : 'down'}}"></view>
+          </view>
+          
+          <view class="shadow-functions" wx:if="{{showAllFunctions}}">
+            <view class="stack-item" wx:for="{{cognitiveFunctions}}" wx:key="index" wx:if="{{index >= 4}}">
+              <view class="stack-position">
+                <text class="position-label">第{{index + 1}}功能:</text>
+                <text class="position-title">{{item.title}}</text>
+              </view>
+              <view class="stack-detail">
+                <text class="function-name">{{item.function}}</text>
+                <text class="function-desc">{{item.description}}</text>
+              </view>
+            </view>
+            
+            <view class="bibi-model">
+              <text class="bibi-title">毕比模型解析</text>
+              <view class="bibi-content">
+                <view class="bibi-item">
+                  <text class="bibi-label">1.主导功能:</text>
+                  <text class="bibi-text">英雄/英雄女</text>
+                </view>
+                <view class="bibi-item">
+                  <text class="bibi-label">2.辅助功能:</text>
+                  <text class="bibi-text">父母</text>
+                </view>
+                <view class="bibi-item">
+                  <text class="bibi-label">3.第三功能:</text>
+                  <text class="bibi-text">永恒少年/永恒少女 (Puer/Puella)</text>
+                </view>
+                <view class="bibi-item">
+                  <text class="bibi-label">4.第四功能:</text>
+                  <text class="bibi-text">阿尼玛/阿尼姆斯 (Anima/Animus)</text>
+                </view>
+                <view class="bibi-item">
+                  <text class="bibi-label">5.对立功能:</text>
+                  <text class="bibi-text">宿敌/对立人格 (Nemesis/Adversary)</text>
+                </view>
+                <view class="bibi-item">
+                  <text class="bibi-label">6.第六功能:</text>
+                  <text class="bibi-text">导师 (Senex) 或长老 (Senator)</text>
+                </view>
+                <view class="bibi-item">
+                  <text class="bibi-label">7.第七功能:</text>
+                  <text class="bibi-text">欺骗者/小丑 (Trickster)</text>
+                </view>
+                <view class="bibi-item">
+                  <text class="bibi-label">8.第八功能:</text>
+                  <text class="bibi-text">恶魔 (Demon)</text>
+                </view>
+              </view>
+              <view class="bibi-explanation">
+                <text>而阴影原型通常与个体的第五功能相关联，这个功能代表了对立和通常是被压抑或被误识别的一面。以下是比比模型中其他四个原型与认知功能的关系</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <text class="section-title">认知功能分析</text>
+        <view class="section-content">
+          <text class="normal-text">{{cognitiveAnalysis}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 职业发展 -->
+    <view class="section" wx:if="{{activeTab === 'career'}}">
+      <view class="section-card">
+        <text class="section-title">职业倾向</text>
+        <view class="section-content">
+          <text class="normal-text">{{careerOverview}}</text>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <text class="section-title">推荐职业</text>
+        <view class="career-list">
+          <view class="career-category" wx:for="{{recommendedCareers}}" wx:key="category">
+            <text class="category-name">{{item.category}}</text>
+            <view class="career-items">
+              <text class="career-item" wx:for="{{item.jobs}}" wx:for-item="job" wx:key="*this">{{job}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <text class="section-title">工作环境适应性</text>
+        <view class="environment-list">
+          <view class="environment-item good">
+            <text class="env-title">理想环境</text>
+            <view class="env-traits">
+              <text class="env-trait" wx:for="{{idealWorkEnvironment}}" wx:key="*this">{{item}}</text>
+            </view>
+          </view>
+          <view class="environment-item bad">
+            <text class="env-title">压力环境</text>
+            <view class="env-traits">
+              <text class="env-trait" wx:for="{{stressfulWorkEnvironment}}" wx:key="*this">{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 人际关系 -->
+    <view class="section" wx:if="{{activeTab === 'relations'}}">
+      <view class="section-card">
+        <text class="section-title">人际关系风格</text>
+        <view class="section-content">
+          <text class="normal-text">{{relationshipStyle}}</text>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <text class="section-title">与其他类型的匹配度</text>
+        <view class="compatibility-list">
+          <view class="compatibility-category">
+            <text class="category-name">最佳匹配</text>
+            <view class="type-matches">
+              <view class="type-match" wx:for="{{bestMatches}}" wx:key="*this">
+                <text class="match-type">{{item}}</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="compatibility-category">
+            <text class="category-name">互补匹配</text>
+            <view class="type-matches">
+              <view class="type-match" wx:for="{{goodMatches}}" wx:key="*this">
+                <text class="match-type">{{item}}</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="compatibility-category">
+            <text class="category-name">潜在挑战</text>
+            <view class="type-matches">
+              <view class="type-match" wx:for="{{challengingMatches}}" wx:key="*this">
+                <text class="match-type">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="section-card">
+        <text class="section-title">沟通建议</text>
+        <view class="section-content">
+          <view class="communication-tips">
+            <view class="tip-item" wx:for="{{communicationTips}}" wx:key="*this">
+              <text class="tip-content">{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,293 @@
+.container {
+  padding: 25rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 添加内容区域样式 */
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 260rpx;
+  /* 为底部固定按钮留出空间 */
+  margin-top: 15rpx;
+  /* 调整顶部间距，确保不与提示信息重合 */
+}
+
+/* 顶部导航栏样式 */
+.header {
+  display: flex;
+  align-items: center;
+  height: 184rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333333;
+  transform: translateY(34rpx);
+}
+
+/* 进度条样式 */
+.progress-bar {
+  width: 100%;
+  height: 80rpx;
+  margin-bottom: 40rpx;
+  margin-top: 10rpx;
+  /* 调整顶部margin */
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 4rpx;
+}
+
+.progress-bg {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 20rpx;
+  background-color: #eef1f6;
+  border-radius: 10rpx;
+  box-shadow: inset 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.progress {
+  position: absolute;
+  height: 20rpx;
+  background: linear-gradient(90deg, #4a90e2 0%, #8066dc 100%);
+  border-radius: 10rpx;
+  transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 2rpx 8rpx rgba(74, 144, 226, 0.4);
+}
+
+.progress-text {
+  position: absolute;
+  top: -18rpx;
+  right: 0;
+  font-size: 30rpx;
+  color: #505a6e;
+  font-weight: 600;
+}
+
+/* 问题容器样式 */
+.question-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 180rpx;
+}
+
+.question-text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 12rpx;
+}
+
+/* 认知功能容器 */
+.question-function-container {
+  margin-top: 16rpx;
+  display: flex;
+
+  justify-content: center;
+}
+
+.question-function {
+  font-size: 24rpx;
+  color: #8066dc;
+  background-color: #f0f2ff;
+  padding: 6rpx 16rpx;
+  border-radius: 16rpx;
+  margin-top: 10rpx;
+  /* 添加不同认知功能的颜色样式 */
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* 选项容器样式 */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  padding: 15rpx;
+  background-color: #fff;
+  border-radius: 14rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.04);
+  margin-bottom: 25rpx;
+}
+
+/* 选项项目样式 */
+.option-item {
+  padding: 24rpx;
+  border-radius: 10rpx;
+  background-color: #f7f9fc;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-item.selected {
+  background-color: #4a90e2;
+  color: white;
+  transform: translateY(-5rpx);
+  box-shadow: 0 5rpx 15rpx rgba(74, 144, 226, 0.3);
+}
+
+.option-text {
+  font-size: 30rpx;
+  text-align: center;
+}
+
+/* 完成测试按钮样式 */
+.finish-btn {
+  width: 100rpx !important;
+  height: 100rpx !important;
+  border-radius: 50%;
+  font-size: 32rpx;
+  padding: 0;
+  background-color: #4a90e2;
+  color: white;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.3);
+}
+
+.finish-btn[disabled] {
+  background-color: #c0d8f0;
+  color: #ffffff;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+/* 导航按钮样式 */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40rpx;
+  width: 90%;
+  height: 86rpx;
+  position: fixed;
+  transform: translateX(-50%);
+  bottom: 60rpx;
+  left: 50%;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  z-index: 90;
+  background-color: white;
+  border-radius: 6rpx;
+}
+
+.prev-btn,
+.next-btn,
+finish-helper-btn {
+  width: 160rpx !important;
+  height: 66rpx !important;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent !important;
+}
+
+.prev-btn[disabled],
+.next-btn[disabled],
+.finish-helper-btn[disabled] {
+  opacity: 0.5;
+  color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-icon {
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 使用SVG箭头替代自制箭头 */
+.next-icon {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB0PSIxNzQ2MTY4NTAzMDYzIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjQ4ODQiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMzcyLjY3OTkzMSAxOTEuNjkwODM0YzguNzgyMDE0IDAgMTcuNTY1MDUxIDMuMjM1Njk0IDI0LjI2ODczIDkuNzA4MTA2bDI5Ny40ODQzMjIgMjg3LjE3NTUzNWMxMy40MDgzODEgMTIuOTMyNTQ0IDEzLjQwODM4MSAzMy45MjI2IDAgNDYuODU1MTRsLTI5Ny40ODUzNDUgMjg3LjE3MjQ2NWMtMTMuNDA4MzggMTIuOTQzOC0zNS4xMzAxMDIgMTIuOTQzOC00OC41Mzc0NiAwLTEzLjQwODM4MS0xMi45MzI1NDQtMTMuNDA4MzgxLTMzLjkyMjYgMC00Ni44NTUxNGwyNzMuMjE1NTkyLTI2My43NDQ4OTNMMzQ4LjQxMTIwMSAyNDguMjUzMDZjLTEzLjQwODM4MS0xMi45MzI1NDQtMTMuNDA4MzgxLTMzLjkyMjYgMC00Ni44NTUxNEMzNTUuMTE0ODggMTk0LjkyNjUyOCAzNjMuODk3OTE3IDE5MS42ODk4MSAzNzIuNjc5OTMxIDE5MS42OTA4MzR6IiBwLWlkPSI0ODg1Ij48L3BhdGg+PC9zdmc+");
+  background-size: 30rpx 30rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 上一题箭头 */
+.prev-icon {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB0PSIxNzQ2MTY4NTI0NjAzIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjUwMzciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNNjUwLjcyMTQzNSAxOTEuNjkwODM0Yy04Ljc4MjAxNCAwLTE3LjU2NTA1MSAzLjIzNTY5NC0yNC4yNjg3MyA5LjcwODEwNkwzMjguOTY4MzgzIDQ4OC41NzM0NTFjLTEzLjQwODM4MSAxMi45MzI1NDQtMTMuNDA4MzgxIDMzLjkyMjYgMCA0Ni44NTUxNDRsMjk3LjQ4NTM0NSAyODcuMTcyNDY1YzEzLjQwODM4MSAxMi45NDM4IDM1LjEzMDEwMiAxMi45NDM4IDQ4LjUzODQ4MyAwIDEzLjQwODM4MS0xMi45MzI1NDQgMTMuNDA4MzgxLTMzLjkyMjYgMC00Ni44NTUxNEw0MDEuNzc0NTczIDUxMi4wMDEwMjNsMjczLjIxNTU5Mi0yNjMuNzQ3OTYzYzEzLjQwODM4MS0xMi45MzI1NDQgMTMuNDA4MzgxLTMzLjkyMjYgMC00Ni44NTUxNEM2NjguMjg2NDg2IDE5NC45MjY1MjggNjU5LjUwNDQ3MiAxOTEuNjg5ODEgNjUwLjcyMTQzNSAxOTEuNjkwODM0eiIgcC1pZD0iNTAzOCI+PC9wYXRoPjwvc3ZnPg==");
+  background-size: 30rpx 30rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 移除现有的箭头线条样式 */
+.prev-icon:before,
+.prev-icon:after,
+.next-icon:before,
+.next-icon:after {
+  display: none;
+}
+
+/* 错误提示样式 */
+.question-error {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30rpx;
+  color: #ff4d4f;
+  font-size: 32rpx;
+}
+
+.retry-btn {
+  margin-top: 20rpx;
+  padding: 20rpx 60rpx;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+}
+
+/* 底部提示 */
+.bottom-tip {
+  margin-top: 30rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  padding: 20rpx 0;
+}
+
+.placeholder {
+  width: 100rpx;
+  height: 100rpx;
+  opacity: 0;
+}
+
+/* 辅助完成按钮样式 */

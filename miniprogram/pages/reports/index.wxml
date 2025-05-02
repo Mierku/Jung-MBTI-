@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="header">
+    <text class="title">报告历史</text>
+  </view>
+
+  <view class="timeline-container" wx:if="{{reports.length > 0}}">
+    <view class="timeline-line"></view>
+    
+    <view class="timeline-item" wx:for="{{reports}}" wx:key="date">
+      <view class="timeline-point"></view>
+      <view class="timeline-date">{{item.formattedDate}}</view>
+      
+      <view class="report-card" bindtap="viewReportDetail" data-id="{{index}}">
+        <view class="report-content">
+          <view class="mbti-type">{{item.type}}</view>
+          <view class="report-details">
+            <view class="cognitive-functions">
+              <view class="function-item" wx:for="{{item.topFunctions}}" wx:key="function" wx:for-item="func">
+                <text class="function-name">{{func.function}}</text>
+                <text class="function-score">{{func.score}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <!-- 删除按钮 -->
+        <view class="delete-icon" catchtap="deleteReport" data-id="{{index}}">
+          <text class="iconfont icon-delete"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <image class="empty-icon" src="https://cdn-icons-png.flaticon.com/512/5728/5728274.png" mode="aspectFit"></image>
+    <text class="empty-text">您还没有测试历史</text>
+    <text class="empty-subtext">完成测试后，结果将显示在这里</text>
+  </view>
+
+  <view class="footer-tip">
+    <text>点击卡片查看详细结果</text>
+  </view>
+</view>

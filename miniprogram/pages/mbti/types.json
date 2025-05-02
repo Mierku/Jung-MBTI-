@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "MBTI 16型人格",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "mbti-icon": "/components/mbti-icon/mbti-icon"
+  }
+}

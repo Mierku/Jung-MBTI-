@@ -1,0 +1,210 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	padding: 30rpx;
+	min-height: 100vh;
+	box-sizing: border-box;
+	background-color: #f9f9f9;
+}
+
+.header {
+	margin-top: 60rpx;
+	margin-bottom: 40rpx;
+}
+
+.title {
+	font-size: 38rpx;
+	font-weight: bold;
+	color: #333;
+}
+
+/* 时间线样式 */
+.timeline-container {
+	position: relative;
+	padding-left: 60rpx;
+	margin-bottom: 40rpx;
+}
+
+.timeline-line {
+	position: absolute;
+	left: 20rpx;
+	top: 20rpx;
+	bottom: 50rpx;
+	width: 6rpx;
+	background: rgba(212, 212, 212, 0.7);
+	opacity: 0.7;
+	border-radius: 3rpx;
+}
+
+.timeline-item {
+	position: relative;
+	margin-bottom: 60rpx;
+	display: flex;
+	flex-direction: column;
+}
+
+.timeline-point {
+	position: absolute;
+	left: -52rpx;
+	top: 36rpx;
+	width: 30rpx;
+	height: 30rpx;
+	border-radius: 50%;
+	background-color: #e3d9ec;
+	z-index: 1;
+}
+
+.timeline-date {
+	font-size: 28rpx;
+	color: #555;
+	margin-bottom: 16rpx;
+	font-weight: 500;
+}
+
+/* 报告卡片样式 */
+.report-card {
+	position: relative;
+	background-color: #fff;
+	border-radius: 16rpx;
+	box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.06);
+	overflow: hidden;
+	width: 100%;
+	box-sizing: border-box;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 30rpx;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-card:active {
+	transform: translateY(2rpx);
+	box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.report-content {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.mbti-type {
+	font-size: 48rpx;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 20rpx;
+	letter-spacing: 2rpx;
+}
+
+.report-details {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10rpx;
+}
+
+.report-detail-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 28rpx;
+}
+
+.detail-label {
+	color: #888;
+	margin-right: 10rpx;
+}
+
+.detail-value {
+	color: #555;
+	font-weight: 500;
+}
+
+.cognitive-functions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16rpx;
+	margin-top: 10rpx;
+}
+
+.function-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f0f2ff;
+	border-radius: 12rpx;
+	padding: 14rpx 6rpx;
+	min-width: 100rpx;
+}
+
+.function-name {
+	font-size: 26rpx;
+	font-weight: bold;
+	color: #8066dc;
+}
+
+.function-score {
+	font-size: 24rpx;
+	color: #666;
+	margin-top: 6rpx;
+}
+
+/* 删除图标样式 */
+.delete-icon {
+	position: absolute;
+	top: 30rpx;
+	right: 30rpx;
+	width: 44rpx;
+	height: 44rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ddd;
+	border-radius: 50%;
+	transition: all 0.2s ease;
+}
+
+.delete-icon:active {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.icon-delete:before {
+	content: "×";
+	font-size: 40rpx;
+	color: #aaa;
+}
+
+/* 空状态样式 */
+.empty-state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 120rpx 0;
+	flex: 1;
+}
+
+.empty-icon {
+	width: 180rpx;
+	height: 180rpx;
+	margin-bottom: 30rpx;
+	opacity: 0.5;
+}
+
+.empty-text {
+	font-size: 32rpx;
+	color: #666;
+	margin-bottom: 10rpx;
+}
+
+.empty-subtext {
+	font-size: 26rpx;
+	color: #999;
+}
+
+.footer-tip {
+	text-align: center;
+	font-size: 24rpx;
+	color: #aaa;
+	padding: 30rpx 0;
+	margin-top: auto;
+}

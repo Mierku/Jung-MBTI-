@@ -1,0 +1,156 @@
+.container {
+	padding: 0;
+	width: 100%;
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
+
+.header {
+	z-index: 4;
+	background-color: white;
+	position: sticky;
+	top: 0;
+	left: 0;
+	display: flex;
+	box-sizing: border-box;
+	align-items: flex-end;
+	padding: 24rpx 26rpx;
+	height: 164rpx;
+	font-size: 36rpx;
+	font-weight: 600;
+	color: #333333;
+}
+
+.mbti-icon {
+	width: 300rpx;
+	height: 300rpx;
+}
+
+.back-btn {
+	position: absolute;
+	font-size: 46rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.back-icon {
+	width: 34rpx;
+	height: 34rpx;
+}
+
+.title {
+	flex: 1;
+	text-align: center;
+	font-size: 34rpx;
+	font-weight: bold;
+}
+
+.type-section {
+	padding: 40rpx 30rpx;
+	position: relative;
+	overflow: hidden;
+}
+
+.section-title {
+	font-size: 80rpx;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+	margin-bottom: 40rpx;
+	opacity: 0.9;
+}
+
+.type-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.type-card {
+	width: 42%;
+	border-radius: 16rpx;
+	padding: 20rpx;
+	margin-bottom: 30rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.type-icon {
+	width: 150rpx;
+	height: 150rpx;
+	margin-bottom: 16rpx;
+}
+
+.type-detail {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.type-code {
+	font-size: 30rpx;
+	font-weight: bold;
+	margin-bottom: 6rpx;
+}
+
+.type-name {
+	font-size: 28rpx;
+	margin-bottom: 12rpx;
+}
+
+.type-desc {
+	font-size: 24rpx;
+	color: #666;
+	line-height: 1.4;
+}
+
+/* 四种颜色背景区域 */
+.analyst-section {
+	background-color: #e6e0ed;
+	/* 浅紫色 */
+}
+
+.diplomat-section {
+	background-color: #e0edea;
+	/* 浅绿色 */
+	margin-top: 0;
+}
+
+.sentinel-section {
+	background-color: #e0e8ed;
+	/* 浅蓝色 */
+	margin-top: 0;
+}
+
+.explorer-section {
+	background-color: #ededdd;
+	/* 浅黄色 */
+	margin-top: 0;
+}
+
+.action-section {
+	display: flex;
+	justify-content: center;
+	padding: 40rpx 0 80rpx;
+}
+
+.start-btn {
+	background-color: #8a2be2;
+	/* 紫色按钮 */
+	color: white;
+	font-size: 32rpx;
+	padding: 20rpx 60rpx;
+	border-radius: 40rpx;
+	box-shadow: 0 6rpx 20rpx rgba(138, 43, 226, 0.3);
+}
+
+.user-type {
+	text-align: center;
+	padding: 30rpx 0 60rpx;
+	font-size: 30rpx;
+	color: #8a2be2;
+	font-weight: bold;
+}
