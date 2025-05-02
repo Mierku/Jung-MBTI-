@@ -1,0 +1,21 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/mbti/index",
+    "pages/mbti/types",
+    "pages/reports/index",
+    "pages/test/test",
+    "pages/result/result",
+    "pages/report-detail/report-detail",
+    "pages/compatibility/compatibility"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "MBTI性格测试",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

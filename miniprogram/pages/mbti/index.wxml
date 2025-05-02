@@ -1,0 +1,106 @@
+<view class="page-container">
+  <!-- 背景装饰元素 -->
+  <view class="bg-decoration-circle1"></view>
+  <view class="bg-decoration-circle2"></view>
+  <view class="bg-decoration-square1"></view>
+  <view class="bg-decoration-square2"></view>
+  <view class="bg-decoration-rect"></view>
+
+  <view class="header">MBTI测试</view>
+
+  <view class="card-container">
+    <!-- 添加MBTI和荣格八维关系卡片 -->
+    <view class="theory-card">
+      <!-- 理论卡片装饰 -->
+      <view class="theory-decoration-circle"></view>
+      <view class="theory-decoration-square"></view>
+
+      <view class="theory-title">关于测试</view>
+      <view class="theory-content">
+        <view class="theory-text">本测试基于荣格八维心理学原理，严格遵循认知功能理论设计。通过72道精心设计的量表题目，结合科学的权重计分系统，精准测量出您的MBTI类型与八大认知功能的使用倾向分值。相比传统MBTI测试，结果更贴近荣格原理，展现更立体全面的MBTI人格画像，帮助您深入理解自我。所有数据均在本地存储，确保安全且私密。</view>
+      </view>
+    </view>
+
+    <!-- 幸运进度条组件 -->
+    <view class="lucky-wheel-container">
+      <view class="lucky-wheel">
+        <!-- 幸运卡片装饰 -->
+        <view class="lucky-decoration-circle"></view>
+        <view class="lucky-decoration-square"></view>
+
+        <view class="wheel-title">今日幸运</view>
+        <view class="wheel-content">
+          <!-- 水平进度条 -->
+          <view class="progress-bar-container">
+            <view class="progress-bar-bg">
+              <view class="progress-bar" style="width: {{luckyPercentage}}%">
+                <text class="progress-text" wx:if="{{luckyPercentage > 15}}">{{luckyPercentage}}%</text>
+              </view>
+              <text class="progress-text-outside" wx:if="{{luckyPercentage <= 15}}">{{luckyPercentage}}%</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 结果显示区域，独立放置 -->
+        <view class="wheel-result">
+          <text>{{luckyResult || '正在分析今日运势...'}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="first-section">
+      <!-- 仅保留测试卡片 -->
+      <view class="test-card card-wrapper types-card" bindtap="startTest">
+        <view class="card-content">
+          <view class="card-title">MBTI 专业测试</view>
+          <view class="card-subtitle">准确了解你的性格类型</view>
+        </view>
+      </view>
+
+      <!-- 新增16型人格卡片 -->
+      <view class="test-card card-wrapper types-card" bindtap="viewAllTypes">
+        <view class="card-content">
+          <view class="card-title">MBTI 面包体</view>
+          <view class="card-subtitle">探索全部性格类型特点</view>
+        </view>
+      </view>
+
+      <!-- 缘分匹配 -->
+      <view class="test-card card-wrapper types-card" bindtap="goToCompatibility">
+        <view class="card-content">
+          <view class="card-title">缘分配对</view>
+          <view class="card-subtitle">分析两种MBTI类型的匹配度</view>
+        </view>
+      </view>
+
+      <!-- 关系网 -->
+      <view class="test-card card-wrapper types-card" bindtap="showRelationship">
+        <view class="card-content">
+          <view class="card-title">关系网</view>
+          <view class="card-subtitle">组建自己的MBTI关系圈</view>
+        </view>
+      </view>
+
+      <!-- 心理健康 -->
+      <view class="test-card card-wrapper types-card" bindtap="showMentalHealth">
+        <view class="card-content">
+          <view class="card-title">心理健康</view>
+          <view class="card-subtitle">根据MBTI类型获取心理调适建议</view>
+        </view>
+      </view>
+
+      <view class="test-card card-wrapper types-card" bindtap="goToReports">
+        <view class="card-content">
+          <view class="card-title">我的报告</view>
+          <view class="card-subtitle">查看所有测试历史记录</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="disclaimer">
+    <text>本应用承诺所有功能完全免费</text>
+  </view>
+
+  <!-- 添加底部安全区域 -->
+  <view class="safe-area-bottom"></view>
+</view>

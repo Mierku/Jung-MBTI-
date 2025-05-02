@@ -1,0 +1,80 @@
+<view class="header">
+  <view class="back-btn" bindtap="goBack">
+    <image class="back-icon" src="data:image/svg+xml;base64,PHN2ZyB0PSIxNzQ2MTcwMDM1ODUzIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjYwMTEiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMjUwLjI0IDQ3NS42NDhMMjEzLjMzMzMzMyA1MTEuNzQ0bDUwOC4yNDUzMzQgNDk3LjQwOGE1My4yMDUzMzMgNTMuMjA1MzMzIDAgMCAwIDczLjY4NTMzMyAwYzkuODEzMzMzLTkuNTE0NjY3IDE1LjM2LTIyLjQ4NTMzMyAxNS4zNi0zNi4wNTMzM2E1MC4zNDY2NjcgNTAuMzQ2NjY3IDAgMCAwLTE1LjI3NDY2Ny0zNi4wOTZMMzYwLjkxNzMzMyA1MTEuODI5MzMzIDc5NS4zNDkzMzMgODcuMDRjOS44MTMzMzMtOS41MTQ2NjcgMTUuMzE3MzMzLTIyLjUyOCAxNS4zMTczMzQtMzYuMDUzMzMzIDAtMTMuNTI1MzMzLTUuNTQ2NjY3LTI2LjQ5Ni0xNS4zNi0zNi4wNTMzMzRhNTMuMTYyNjY3IDUzLjE2MjY2NyAwIDAgMC03My43MjgtMC4wODUzMzNMMjUyLjM3MzMzMyA0NzMuNjg1MzMzbC0yLjEzMzMzMyAyLjAwNTMzNHoiIGZpbGw9IiM2NjY2NjYiIHAtaWQ9IjYwMTIiPjwvcGF0aD48L3N2Zz4="></image>
+  </view>
+  <view class="title">人格类型</view>
+</view>
+<view class="container">
+
+
+
+  <!-- 分析家族 - 紫色区域 -->
+  <view class="type-section analyst-section">
+    <view class="section-title">分析家</view>
+    <view class="type-grid">
+      <view class="type-card" wx:for="{{analysts}}" wx:key="type" bindtap="viewTypeDetail" data-type="{{item.type}}">
+        <mbti-icon src="{{item.type}}" mbti-icon="mbti-icon" />
+        <view class="type-detail">
+          <text class="type-code">{{item.type}}</text>
+          <text class="type-name">{{item.name}}</text>
+          <text class="type-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 外交家族 - 绿色区域 -->
+  <view class="type-section diplomat-section">
+    <view class="section-title">外交家</view>
+    <view class="type-grid">
+      <view class="type-card" wx:for="{{diplomats}}" wx:key="type" bindtap="viewTypeDetail" data-type="{{item.type}}">
+        <mbti-icon src="{{item.type}}" mbti-icon="mbti-icon" />
+        <view class="type-detail">
+          <text class="type-code">{{item.type}}</text>
+          <text class="type-name">{{item.name}}</text>
+          <text class="type-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 哨兵族 - 蓝色区域 -->
+  <view class="type-section sentinel-section">
+    <view class="section-title">哨兵者</view>
+    <view class="type-grid">
+      <view class="type-card" wx:for="{{sentinels}}" wx:key="type" bindtap="viewTypeDetail" data-type="{{item.type}}">
+        <mbti-icon src="{{item.type}}" mbti-icon="mbti-icon" />
+        <view class="type-detail">
+          <text class="type-code">{{item.type}}</text>
+          <text class="type-name">{{item.name}}</text>
+          <text class="type-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 探险家族 - 黄色区域 -->
+  <view class="type-section explorer-section">
+    <view class="section-title">探险家</view>
+    <view class="type-grid">
+      <view class="type-card" wx:for="{{explorers}}" wx:key="type" bindtap="viewTypeDetail" data-type="{{item.type}}">
+        <mbti-icon src="{{item.type}}" mbti-icon="mbti-icon" />
+        <view class="type-detail">
+          <text class="type-code">{{item.type}}</text>
+          <text class="type-name">{{item.name}}</text>
+          <text class="type-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 找到您的类型按钮 -->
+  <view class="action-section" wx:if="{{!userMbtiType}}">
+    <button class="start-btn" bindtap="startTest">找到您的类型</button>
+  </view>
+
+  <!-- 您的类型提示 -->
+  <view class="user-type" wx:if="{{userMbtiType}}">
+    <text>您的类型: {{userMbtiType}}</text>
+  </view>
+</view>
