@@ -56,7 +56,7 @@ Page({
 				const savedPercentage =
 					parseInt(wx.getStorageSync("lastLuckyPercentage")) || 80;
 
-				console.log("从缓存读取幸运值:", savedResult, savedPercentage);
+				// console.log("从缓存读取幸运值:", savedResult, savedPercentage);
 
 				this.setData({
 					luckyResult: savedResult,
@@ -70,7 +70,7 @@ Page({
 
 				// 根据幸运值选择结果
 				const result = this.getRandomLuckyResult(randomPercentage);
-				console.log("生成新的幸运值:", result, randomPercentage);
+				// console.log("生成新的幸运值:", result, randomPercentage);
 
 				// 使用更高效的方式更新进度条
 				const that = this;
@@ -129,6 +129,11 @@ Page({
 	},
 
 	startTest: function () {
+		// 在开始新测试前，清除之前的测试结果缓存
+		// console.log("开始新测试，清除旧的测试结果");
+		app.globalData.mbtiResult = null;
+		wx.removeStorageSync("mbtiResult");
+
 		wx.navigateTo({
 			url: "/pages/test/test",
 		});
@@ -217,5 +222,29 @@ Page({
 			confirmText: "了解了",
 			showCancel: false,
 		});
+	},
+
+	/**
+	 * 用户点击右上角分享给朋友
+	 */
+	onShareAppMessage: function () {
+		// console.log("从首页分享给朋友");
+		return {
+			title: "MBTI性格测试 - 探索你的性格类型",
+			path: "/pages/mbti/index",
+			imageUrl: "/images/mbti/enfj.svg", // 使用一个默认图片
+		};
+	},
+
+	/**
+	 * 用户点击右上角分享到朋友圈
+	 */
+	onShareTimeline: function () {
+		// console.log("从首页分享到朋友圈");
+		return {
+			title: "MBTI性格测试 - 探索你的性格类型",
+			query: "",
+			imageUrl: "/images/mbti/enfj.svg", // 使用一个默认图片
+		};
 	},
 });

@@ -86,7 +86,7 @@ Page({
 
 	onLoad() {
 		try {
-			console.log("结果页面加载");
+			// console.log("结果页面加载");
 
 			// 检查并获取MBTI结果，优先从全局数据获取，如果没有则从本地存储获取
 			let mbtiResult = app.globalData.mbtiResult;
@@ -96,7 +96,7 @@ Page({
 				mbtiResult = wx.getStorageSync("mbtiResult");
 			}
 
-			console.log("MBTI结果:", mbtiResult);
+			// console.log("MBTI结果:", mbtiResult);
 
 			if (mbtiResult && mbtiResult.type) {
 				// 直接使用新的认知功能得分
@@ -137,7 +137,7 @@ Page({
 					populationPercentage: mbtiTypeDistribution[mbtiResult.type] || 0, // 设置类型在全球人口中的分布百分比
 				});
 
-				console.log("更新后的页面数据:", this.data);
+				// console.log("更新后的页面数据:", this.data);
 
 				// 保存测试结果到本地存储，用于在"我的报告"中显示
 				this.saveTestReport(mbtiResult, typeFullName);
@@ -145,6 +145,12 @@ Page({
 				console.error("未找到有效的MBTI结果");
 				this.handleMissingData();
 			}
+
+			// 显示分享菜单按钮
+			wx.showShareMenu({
+				withShareTicket: true,
+				menus: ["shareAppMessage", "shareTimeline"],
+			});
 		} catch (error) {
 			console.error("结果页面加载出错:", error);
 			this.handleMissingData();
@@ -229,12 +235,12 @@ Page({
 			const maxFunction = Object.keys(scores).find(
 				(func) => scores[func] === maxScore
 			);
-			console.log(
-				"八个认知功能中的最大值:",
-				maxScore,
-				"对应功能:",
-				maxFunction
-			);
+			// console.log(
+			// 	"八个认知功能中的最大值:",
+			// 	maxScore,
+			// 	"对应功能:",
+			// 	maxFunction
+			// );
 
 			// 将每个认知功能的得分转换为相对于最大值的百分比
 			const functionScores = {};
@@ -247,8 +253,8 @@ Page({
 				);
 			});
 
-			console.log("格式化后的认知功能得分:", functionScores);
-			console.log("原始分数:", rawScores);
+			// console.log("格式化后的认知功能得分:", functionScores);
+			// console.log("原始分数:", rawScores);
 
 			// 返回百分比、原始分数和最高分功能
 			return {
@@ -290,17 +296,19 @@ Page({
 		wx.showActionSheet({
 			itemList: ["分享给微信好友", "分享到朋友圈", "保存分享图片"],
 			success: (res) => {
-				if (res.tapIndex === 0 || res.tapIndex === 1) {
-					// 分享给好友或朋友圈
-					wx.showShareMenu({
-						withShareTicket: true,
-						menus: ["shareAppMessage", "shareTimeline"],
-						success: () => {
-							wx.showToast({
-								title: "请点击右上角分享",
-								icon: "none",
-							});
-						},
+				if (res.tapIndex === 0) {
+					// 分享给好友
+					wx.showToast({
+						title: '请点击右上角的"..."按钮，选择"分享"',
+						icon: "none",
+						duration: 2000,
+					});
+				} else if (res.tapIndex === 1) {
+					// 分享到朋友圈
+					wx.showToast({
+						title: '请点击右上角"..."，选择"分享到朋友圈"',
+						icon: "none",
+						duration: 2000,
 					});
 				} else if (res.tapIndex === 2) {
 					// 生成分享图片 - 可以保存到本地
@@ -381,7 +389,7 @@ Page({
 
 					// 设置画布尺寸
 					canvas.width = 600;
-					canvas.height = 1200; // 设置一个足够大的固定高度
+					canvas.height = 1190; // 设置一个足够大的固定高度
 
 					// 绘制背景
 					ctx.fillStyle = "#F5F7FA";
@@ -752,7 +760,7 @@ Page({
 								width: 600,
 								height: 1200, // 使用固定高度1200
 								destWidth: 1200, // 2倍分辨率以提高清晰度
-								destHeight: 2600, // 固定高度的2倍
+								destHeight: 2200, // 固定高度的2倍
 								success: (res) => {
 									const tempFilePath = res.tempFilePath;
 
@@ -899,23 +907,28 @@ Page({
 		return {
 			title: `我的MBTI人格类型是${mbtiType}(${typeFullName})，${percentText}，来测测你的吧！`,
 			path: "/pages/index/index",
-			imageUrl: "/assets/images/share-img.png",
+			imageUrl: `/images/mbti/${mbtiType.toLowerCase()}.svg`,
 		};
 	},
 
 	// 分享到朋友圈
 	onShareTimeline() {
+		// console.log("尝试分享到朋友圈...");
 		const mbtiType = this.data.mbtiResult ? this.data.mbtiResult.type : "未知";
 		const typeFullName = this.data.typeFullName || "";
 		const percentText = this.data.populationPercentage
 			? `全球仅${this.data.populationPercentage}%的人`
 			: "";
 
-		return {
+		// 更详细的日志
+		const shareInfo = {
 			title: `我的MBTI人格类型是${mbtiType}(${typeFullName})，${percentText}，来测测你的吧！`,
 			query: "",
-			imageUrl: "/assets/images/share-img.png",
+			imageUrl: `/images/mbti/${mbtiType.toLowerCase()}.svg`,
 		};
+		// console.log("分享到朋友圈信息:", shareInfo);
+
+		return shareInfo;
 	},
 
 	// 跳转到完整报告页面
@@ -928,8 +941,22 @@ Page({
 			return;
 		}
 
+		// 在跳转时传递MBTI类型参数
+		const mbtiType = this.data.mbtiResult.type;
+		// console.log("跳转到深度报告页面，MBTI类型:", mbtiType);
+
 		wx.navigateTo({
-			url: "/pages/report-detail/report-detail",
+			url: `/pages/report-detail/report-detail?type=${mbtiType}`,
+			success: (res) => {
+				// console.log("跳转到深度报告页面成功");
+			},
+			fail: (err) => {
+				console.error("跳转到深度报告页面失败:", err);
+				wx.showToast({
+					title: "跳转失败，请重试",
+					icon: "none",
+				});
+			},
 		});
 	},
 
