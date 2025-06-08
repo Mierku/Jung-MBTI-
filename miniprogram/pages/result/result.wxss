@@ -123,12 +123,10 @@
   position: relative;
   flex: 1;
   margin: 0 20rpx;
-
 }
 
 .progress-container progress {
   width: 100%;
-
 }
 
 .progress-score {
@@ -189,43 +187,6 @@
   color: rgb(120, 127, 141);
 }
 
-/* 九型 */
-.enneagram-wrapper {
-  margin-top: 46rpx;
-  padding: 40rpx;
-}
-
-.enneagram-title {
-  color: #333333;
-  font-size: 46rpx;
-  font-weight: 600;
-  margin-bottom: 26rpx;
-  display: flex;
-  gap: 46rpx;
-}
-
-.enneagram-tags {
-  margin-top: 12rpx;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24rpx;
-}
-
-.enneagram-tag {
-  color: #333;
-  padding: 8rpx 16rpx;
-  font-size: 36rpx;
-  font-weight: 500;
-}
-
-.enneagram-btn {
-  margin-top: 40rpx;
-  border-radius: 2rpx;
-  background-color: transparent;
-  border: 1rpx solid rgb(133, 133, 133);
-}
-
 .box-clip {
   content: "";
   position: absolute;
@@ -280,7 +241,7 @@
   left: 0;
   right: 0;
   display: flex;
-  height: 120rpx;
+  height: calc(env(safe-area-inset-bottom) + 120rpx);
   background-color: #fff;
   box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
   padding: 16rpx 40rpx;

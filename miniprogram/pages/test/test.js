@@ -39,8 +39,8 @@ Page({
 			});
 
 			this.calculateProgress();
-			console.log("测试页面已加载");
-			console.log(`随机生成了${questions.length}个问题`);
+			// console.log("测试页面已加载");
+			// console.log(`随机生成了${questions.length}个问题`);
 			this.initTipAnimation();
 		} catch (error) {
 			console.error("onLoad error:", error);
@@ -91,13 +91,13 @@ Page({
 
 				// 如果是最后一题，尝试多种方式触发完成对话框
 				if (isLastQuestion) {
-					console.log("这是最后一题，尝试触发完成对话框");
+					// console.log("这是最后一题，尝试触发完成对话框");
 					// 尝试使用新方法
 					const testCompleted = this.checkIfTestCompleted();
 
 					// 如果新方法失败，尝试使用备用方法
 					if (!testCompleted) {
-						console.log("checkIfTestCompleted方法返回false，尝试备用方法");
+						// console.log("checkIfTestCompleted方法返回false，尝试备用方法");
 						this.autoFinishTest();
 					}
 				}
@@ -114,11 +114,16 @@ Page({
 		}
 	},
 
+	// 完成测试
 	finishTest() {
 		try {
-			// 显示加载提示
+			// 在结算前先清除之前的结果，防止数据混淆
+			app.globalData.mbtiResult = null;
+			wx.removeStorageSync("mbtiResult");
+
+			// console.log("完成测试，开始计算结果");
 			wx.showLoading({
-				title: "计算结果中...",
+				title: "计算结果中",
 				mask: true,
 			});
 
@@ -131,7 +136,7 @@ Page({
 			wx.hideLoading();
 			console.error("完成测试出错:", error);
 			wx.showToast({
-				title: "测试完成处理失败",
+				title: "计算结果失败",
 				icon: "none",
 			});
 		}
@@ -209,21 +214,21 @@ Page({
 			};
 
 			// 在控制台打印加权前后的值
-			console.log("原始分数:", result.originalScores);
-			console.log("维度排名:", result.axisRanking);
-			console.log("应用的乘数:", result.multipliers);
-			console.log("加权后的分数:", result.scores);
+			// console.log("原始分数:", result.originalScores);
+			// console.log("维度排名:", result.axisRanking);
+			// console.log("应用的乘数:", result.multipliers);
+			// console.log("加权后的分数:", result.scores);
 
 			// 添加认知功能排名的调试信息
 			const rankedFunctions = Object.entries(result.scores)
 				.map(([func, score]) => ({ func, score }))
 				.sort((a, b) => b.score - a.score);
-			console.log("认知功能排名:", rankedFunctions);
-			console.log(
-				"主导与辅助功能差值:",
-				rankedFunctions[0].score - rankedFunctions[1].score
-			);
-			console.log("最终MBTI类型:", result.type);
+			// console.log("认知功能排名:", rankedFunctions);
+			// console.log(
+			// 	"主导与辅助功能差值:",
+			// 	rankedFunctions[0].score - rankedFunctions[1].score
+			// );
+			// console.log("最终MBTI类型:", result.type);
 
 			// 保存到全局数据和本地存储
 			app.globalData.mbtiResult = result;
@@ -235,10 +240,10 @@ Page({
 			// 延迟一下再跳转，确保数据已保存
 			setTimeout(() => {
 				// 导航到结果页面
-				wx.navigateTo({
+				wx.redirectTo({
 					url: "/pages/result/result",
 					success: () => {
-						console.log("成功跳转到结果页面");
+						// console.log("成功跳转到结果页面");
 					},
 					fail: (err) => {
 						console.error("跳转到结果页面失败:", err);
@@ -343,19 +348,19 @@ Page({
 			const isLastQuestion =
 				this.data.currentQuestion === this.data.totalQuestions - 1;
 
-			console.log("检查测试完成状态:");
-			console.log(
-				"- 当前题目:",
-				this.data.currentQuestion + 1,
-				"/",
-				this.data.totalQuestions
-			);
-			console.log("- 所有问题已回答:", allAnswered);
-			console.log("- 当前是最后一题:", isLastQuestion);
+			// console.log("检查测试完成状态:");
+			// console.log(
+			// 	"- 当前题目:",
+			// 	this.data.currentQuestion + 1,
+			// 	"/",
+			// 	this.data.totalQuestions
+			// );
+			// console.log("- 所有问题已回答:", allAnswered);
+			// console.log("- 当前是最后一题:", isLastQuestion);
 
 			// 如果是最后一题并且所有问题都已回答，显示确认对话框
 			if (isLastQuestion && allAnswered) {
-				console.log("测试已完成，显示确认对话框");
+				// console.log("测试已完成，显示确认对话框");
 
 				// 使用setTimeout确保UI已经更新
 				setTimeout(() => {
@@ -367,12 +372,12 @@ Page({
 						showCancel: true,
 						mask: true, // 添加遮罩防止用户点击其他地方
 						success: (res) => {
-							console.log("对话框选择结果:", res);
+							// console.log("对话框选择结果:", res);
 							if (res.confirm) {
-								console.log("用户选择了立即提交");
+								// console.log("用户选择了立即提交");
 								this.finishTest();
 							} else {
-								console.log("用户选择了再检查");
+								// console.log("用户选择了再检查");
 							}
 						},
 						fail: (err) => {
@@ -393,13 +398,13 @@ Page({
 
 	// 添加备用方法，用于自动完成测试
 	autoFinishTest() {
-		console.log("尝试自动完成测试");
+		// console.log("尝试自动完成测试");
 		// 检查是否在最后一题
 		if (this.data.currentQuestion === this.data.totalQuestions - 1) {
 			// 检查是否所有问题都已回答
 			const allAnswered = this.data.answers.every((answer) => answer !== null);
 			if (allAnswered) {
-				console.log("所有条件满足，显示确认对话框");
+				// console.log("所有条件满足，显示确认对话框");
 				wx.showModal({
 					title: "完成测试",
 					content: "您已完成所有题目，是否现在提交结果？",

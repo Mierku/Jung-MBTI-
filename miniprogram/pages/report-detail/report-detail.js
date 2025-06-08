@@ -51,10 +51,43 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		// 从上一个页面获取MBTI结果
-		const mbtiResult = wx.getStorageSync("mbtiResult") || {};
+		// 显示分享菜单按钮
+		wx.showShareMenu({
+			withShareTicket: true,
+			menus: ["shareAppMessage", "shareTimeline"],
+		});
+
+		// console.log("深度报告页面加载");
+
+		// 尝试从页面参数获取类型 - 这是优先级最高的来源
+		let mbtiType = options.type || "";
+		// console.log("URL参数中的MBTI类型:", mbtiType);
+
+		// 根据不同情况准备mbtiResult对象
+		let mbtiResult;
+
+		// 1. 如果URL参数有类型，使用该类型创建结果对象（优先）
+		if (mbtiType) {
+			// console.log("使用URL参数创建结果对象:", mbtiType);
+			mbtiResult = {
+				type: mbtiType,
+				scores: {},
+				functionScores: {},
+			};
+		}
+		// 2. 如果URL没有类型参数，则尝试使用全局数据
+		else if (app.globalData.mbtiResult && app.globalData.mbtiResult.type) {
+			mbtiResult = app.globalData.mbtiResult;
+			// console.log("从全局数据获取的MBTI类型:", mbtiResult.type);
+		}
+		// 3. 如果前两种都没有，则尝试从存储获取
+		else {
+			mbtiResult = wx.getStorageSync("mbtiResult") || {};
+			// console.log("从本地存储获取的MBTI类型:", mbtiResult.type || "未找到");
+		}
 
 		if (!mbtiResult || !mbtiResult.type) {
+			console.error("未找到有效的MBTI结果");
 			wx.showToast({
 				title: "未找到测试结果",
 				icon: "none",
@@ -67,6 +100,8 @@ Page({
 			return;
 		}
 
+		// console.log("最终使用的MBTI类型:", mbtiResult.type);
+
 		// 设置类型颜色
 		const typeColors =
 			mbtiColorSchemes[mbtiResult.type] || this.data.typeColors;
@@ -78,6 +113,12 @@ Page({
 
 		// 获取对应的MBTI类型报告数据
 		const typeData = mbtiReportData[mbtiResult.type] || {};
+		// console.log(
+		// 	"获取到的报告数据类型:",
+		// 	mbtiResult.type,
+		// 	"数据是否存在:",
+		// 	!!typeData
+		// );
 
 		// 获取MBTI全名
 		const typeFullName = this.getMbtiFullName(mbtiResult.type);
@@ -192,9 +233,26 @@ Page({
 	 * 分享报告
 	 */
 	shareReport: function () {
-		wx.showShareMenu({
-			withShareTicket: true,
-			menus: ["shareAppMessage", "shareTimeline"],
+		// 显示分享选项
+		wx.showActionSheet({
+			itemList: ["分享给微信好友", "分享到朋友圈"],
+			success: (res) => {
+				if (res.tapIndex === 0) {
+					// 分享给好友
+					wx.showToast({
+						title: '请点击右上角的"..."按钮，选择"分享"',
+						icon: "none",
+						duration: 2000,
+					});
+				} else if (res.tapIndex === 1) {
+					// 分享到朋友圈
+					wx.showToast({
+						title: '请点击右上角"..."，选择"分享到朋友圈"',
+						icon: "none",
+						duration: 2000,
+					});
+				}
+			},
 		});
 	},
 
@@ -455,7 +513,7 @@ Page({
 		return {
 			title: `我的MBTI人格类型是${this.data.mbtiResult.type}(${this.data.typeFullName})`,
 			path: "/pages/index/index",
-			imageUrl: "/images/share-bg.jpg",
+			imageUrl: `/images/mbti/${this.data.mbtiResult.type.toLowerCase()}.svg`,
 		};
 	},
 
@@ -463,10 +521,19 @@ Page({
 	 * 用户点击右上角分享到朋友圈
 	 */
 	onShareTimeline: function () {
-		return {
-			title: `我的MBTI人格类型是${this.data.mbtiResult.type}(${this.data.typeFullName})`,
-			imageUrl: "/images/share-bg.jpg",
+		// console.log("尝试从报告详情页分享到朋友圈...");
+		// 确保有MBTI结果
+		const mbtiType = this.data.mbtiResult ? this.data.mbtiResult.type : "未知";
+		const typeFullName = this.data.typeFullName || "";
+
+		// 构建分享信息
+		const shareInfo = {
+			title: `我的MBTI人格类型是${mbtiType}(${typeFullName})，来测测你的吧！`,
+			imageUrl: `/images/mbti/${mbtiType.toLowerCase()}.svg`,
 		};
+
+		// console.log("报告详情页分享到朋友圈信息:", shareInfo);
+		return shareInfo;
 	},
 
 	/**

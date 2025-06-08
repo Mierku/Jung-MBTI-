@@ -1,81 +1,81 @@
 .page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: linear-gradient(to bottom, #ffffff, #f9f9ff);
-  padding-bottom: env(safe-area-inset-bottom);
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: linear-gradient(to bottom, #ffffff, #f9f9ff);
+	padding-bottom: env(safe-area-inset-bottom);
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  height: 184rpx;
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #333333;
-  transform: translateY(34rpx);
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+	height: 184rpx;
+	font-size: 36rpx;
+	font-weight: 600;
+	color: #333333;
+	transform: translateY(34rpx);
 }
 
 .first-section {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10rpx;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10rpx;
 }
 
 .card-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24rpx;
+	display: flex;
+	flex-direction: column;
+	gap: 24rpx;
 }
 
 /* 删除未使用的样式 */
 
 .section-title {
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #333333;
-  margin-bottom: 20rpx;
-  display: block;
+	font-size: 30rpx;
+	font-weight: 600;
+	color: #333333;
+	margin-bottom: 20rpx;
+	display: block;
 }
 
 .card {
-  border-radius: 24rpx;
-  padding: 32rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 180rpx;
-  transition: all 0.3s ease;
+	border-radius: 24rpx;
+	padding: 32rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 180rpx;
+	transition: all 0.3s ease;
 }
 
 .card:active {
-  transform: scale(0.98);
-  opacity: 0.9;
+	transform: scale(0.98);
+	opacity: 0.9;
 }
 
 .card-content {
-  z-index: 2;
-  position: relative;
+	z-index: 2;
+	position: relative;
 }
 
 .card-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #4e4e4e;
-  margin-bottom: 10rpx;
-  position: relative;
-  z-index: 2;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #4e4e4e;
+	margin-bottom: 10rpx;
+	position: relative;
+	z-index: 2;
 }
 
 .card-subtitle {
-  font-size: 24rpx;
-  color: rgba(88, 88, 88, 0.9);
-  position: relative;
-  z-index: 2;
+	font-size: 24rpx;
+	color: rgba(88, 88, 88, 0.9);
+	position: relative;
+	z-index: 2;
 }
 
 /* 底部安全区域样式 */
@@ -86,369 +86,369 @@
 
 /* 免责声明样式 */
 .disclaimer {
-  width: 100%;
-  height: constant(safe-area-inset-bottom);
-  height: env(safe-area-inset-bottom);
-  text-align: center;
-  padding: 16rpx 0;
-  letter-spacing: 1px;
-  background-color: #fafafa;
-  border-top: 1rpx solid #eeeeee;
-  margin-top: auto;
+	width: 100%;
+	height: constant(safe-area-inset-bottom);
+	height: env(safe-area-inset-bottom);
+	text-align: center;
+	padding: 16rpx 0;
+	letter-spacing: 1px;
+	background-color: #fafafa;
+	border-top: 1rpx solid #eeeeee;
+	margin-top: auto;
 }
 
 .disclaimer text {
-  font-size: 22rpx;
-  color: #999999;
-  line-height: 1;
+	font-size: 22rpx;
+	color: #999999;
+	line-height: 1;
 }
 
 .card-container {
-  padding: 16rpx;
-  margin-top: 10rpx;
-  margin-bottom: 8rpx;
-  box-sizing: border-box;
+	padding: 16rpx;
+	margin-top: 10rpx;
+	margin-bottom: 8rpx;
+	box-sizing: border-box;
 }
 
 .card-wrapper {
-  display: flex;
-  border-radius: 4rpx;
-  height: 160rpx;
-  padding: 24rpx;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 90rpx;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
+	display: flex;
+	border-radius: 4rpx;
+	height: 160rpx;
+	padding: 24rpx;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 90rpx;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
 }
 
 .test-card {
-  position: relative;
-  overflow: hidden;
-  background-color: white;
-  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+	position: relative;
+	overflow: hidden;
+	background-color: white;
+	box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
 }
 
 .test-card:after {
-  content: "";
-  position: absolute;
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 50%;
-  background: rgba(128, 102, 220, 0.05);
-  right: 20rpx;
-  bottom: 10rpx;
-  z-index: 0;
+	content: "";
+	position: absolute;
+	width: 40rpx;
+	height: 40rpx;
+	border-radius: 50%;
+	background: rgba(128, 102, 220, 0.05);
+	right: 20rpx;
+	bottom: 10rpx;
+	z-index: 0;
 }
 
 .test-card:before {
-  content: "";
-  position: absolute;
-  width: 30rpx;
-  height: 30rpx;
-  background: rgba(74, 144, 226, 0.06);
-  left: 15rpx;
-  top: 15rpx;
-  transform: rotate(45deg);
-  z-index: 0;
+	content: "";
+	position: absolute;
+	width: 30rpx;
+	height: 30rpx;
+	background: rgba(74, 144, 226, 0.06);
+	left: 15rpx;
+	top: 15rpx;
+	transform: rotate(45deg);
+	z-index: 0;
 }
 
 .test-card:active {
-  transform: translateY(2rpx);
-  box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.08);
+	transform: translateY(2rpx);
+	box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.08);
 }
 
 /* 动态悬浮效果 */
 @keyframes float {
-  0% {
-    transform: translateY(0);
-  }
+	0% {
+		transform: translateY(0);
+	}
 
-  50% {
-    transform: translateY(-5rpx);
-  }
+	50% {
+		transform: translateY(-5rpx);
+	}
 
-  100% {
-    transform: translateY(0);
-  }
+	100% {
+		transform: translateY(0);
+	}
 }
 
 .bg-decoration-circle1,
 .bg-decoration-square1,
 .lucky-decoration-circle {
-  animation: float 6s ease-in-out infinite;
+	animation: float 6s ease-in-out infinite;
 }
 
 .bg-decoration-circle2,
 .bg-decoration-square2,
 .theory-decoration-circle {
-  animation: float 7s ease-in-out infinite;
-  animation-delay: 1s;
+	animation: float 7s ease-in-out infinite;
+	animation-delay: 1s;
 }
 
 .bg-decoration-rect,
 .theory-decoration-square,
 .lucky-decoration-square {
-  animation: float 8s ease-in-out infinite;
-  animation-delay: 2s;
+	animation: float 8s ease-in-out infinite;
+	animation-delay: 2s;
 }
 
 /* 16型人格卡片样式 */
 .types-card {
-  border: 1px solid rgba(88, 88, 88, 0.08);
+	border: 1px solid rgba(88, 88, 88, 0.08);
 }
 
 /* 幸运进度条样式 */
 .lucky-wheel-container {
-  display: flex;
-  justify-content: center;
-  padding: 8rpx 0;
-  margin-bottom: 10rpx;
+	display: flex;
+	justify-content: center;
+	padding: 8rpx 0;
+	margin-bottom: 10rpx;
 }
 
 /* MBTI理论卡片样式 */
 .theory-card {
-  width: 100%;
-  background: rgba(144, 164, 203, 0.1);
-  border-radius: 4rpx;
-  padding: 16rpx 20rpx;
-  box-shadow: 0 2rpx 6rpx rgba(0, 0, 255, 0.03);
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rpx;
-  margin-bottom: 12rpx;
-  border: 1px solid rgba(144, 164, 203, 0.15);
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
+	width: 100%;
+	background: rgba(144, 164, 203, 0.1);
+	border-radius: 4rpx;
+	padding: 16rpx 20rpx;
+	box-shadow: 0 2rpx 6rpx rgba(0, 0, 255, 0.03);
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rpx;
+	margin-bottom: 12rpx;
+	border: 1px solid rgba(144, 164, 203, 0.15);
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
 }
 
 /* 理论卡片内部装饰 */
 .theory-decoration-circle {
-  position: absolute;
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 50%;
-  background: rgba(144, 164, 203, 0.1);
-  top: -30rpx;
-  right: -20rpx;
-  z-index: 0;
+	position: absolute;
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 50%;
+	background: rgba(144, 164, 203, 0.1);
+	top: -30rpx;
+	right: -20rpx;
+	z-index: 0;
 }
 
 .theory-decoration-square {
-  position: absolute;
-  width: 60rpx;
-  height: 60rpx;
-  background: rgba(144, 164, 203, 0.08);
-  transform: rotate(30deg);
-  bottom: -20rpx;
-  left: 30rpx;
-  z-index: 0;
+	position: absolute;
+	width: 60rpx;
+	height: 60rpx;
+	background: rgba(144, 164, 203, 0.08);
+	transform: rotate(30deg);
+	bottom: -20rpx;
+	left: 30rpx;
+	z-index: 0;
 }
 
 .theory-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #4a5a81;
-  margin-bottom: 12rpx;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #4a5a81;
+	margin-bottom: 12rpx;
+	text-align: center;
+	position: relative;
+	z-index: 1;
 }
 
 .theory-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  z-index: 1;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	position: relative;
+	z-index: 1;
 }
 
 .theory-text {
-  font-size: 28rpx;
-  color: #5f6f8f;
-  line-height: 1.55;
-  text-align: justify;
-  word-wrap: break-word;
-  margin-bottom: 4rpx;
+	font-size: 28rpx;
+	color: #5f6f8f;
+	line-height: 1.55;
+	text-align: justify;
+	word-wrap: break-word;
+	margin-bottom: 4rpx;
 }
 
 .lucky-wheel {
-  width: 100%;
-  background: rgba(188, 143, 143, 0.1);
-  border-radius: 4rpx;
-  padding: 20rpx;
-  box-shadow: 0 2rpx 6rpx rgba(255, 152, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid rgba(188, 143, 143, 0.15);
-  position: relative;
-  overflow: hidden;
+	width: 100%;
+	background: rgba(188, 143, 143, 0.1);
+	border-radius: 4rpx;
+	padding: 20rpx;
+	box-shadow: 0 2rpx 6rpx rgba(255, 152, 0, 0.05);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid rgba(188, 143, 143, 0.15);
+	position: relative;
+	overflow: hidden;
 }
 
 .lucky-decoration-circle {
-  position: absolute;
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  background: rgba(188, 143, 143, 0.07);
-  top: -40rpx;
-  left: -30rpx;
-  z-index: 0;
+	position: absolute;
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	background: rgba(188, 143, 143, 0.07);
+	top: -40rpx;
+	left: -30rpx;
+	z-index: 0;
 }
 
 .lucky-decoration-square {
-  position: absolute;
-  width: 70rpx;
-  height: 70rpx;
-  background: rgba(188, 143, 143, 0.05);
-  bottom: -20rpx;
-  right: 20rpx;
-  transform: rotate(20deg);
-  z-index: 0;
+	position: absolute;
+	width: 70rpx;
+	height: 70rpx;
+	background: rgba(188, 143, 143, 0.05);
+	bottom: -20rpx;
+	right: 20rpx;
+	transform: rotate(20deg);
+	z-index: 0;
 }
 
 .wheel-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: rgba(188, 143, 143, 1);
-  margin-bottom: 16rpx;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: rgba(188, 143, 143, 1);
+	margin-bottom: 16rpx;
+	text-align: center;
+	position: relative;
+	z-index: 1;
 }
 
 .wheel-content {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20rpx;
-  position: relative;
-  z-index: 1;
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20rpx;
+	position: relative;
+	z-index: 1;
 }
 
 /* 水平进度条样式 */
 .progress-bar-container {
-  width: 100%;
-  max-width: 500rpx;
-  padding: 10rpx 0;
+	width: 100%;
+	max-width: 500rpx;
+	padding: 10rpx 0;
 }
 
 .progress-bar-bg {
-  height: 50rpx;
-  width: 100%;
-  background-color: rgba(188, 143, 143, 0.2);
-  border-radius: 4rpx;
-  overflow: hidden;
-  position: relative;
+	height: 50rpx;
+	width: 100%;
+	background-color: rgba(188, 143, 143, 0.2);
+	border-radius: 4rpx;
+	overflow: hidden;
+	position: relative;
 }
 
 .progress-bar {
-  height: 100%;
-  background-color: rgba(188, 143, 143, 1);
-  border-radius: 4rpx;
-  transition: width 0.8s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
+	height: 100%;
+	background-color: rgba(188, 143, 143, 1);
+	border-radius: 4rpx;
+	transition: width 0.8s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: relative;
 }
 
 .progress-text {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #fff;
-  margin-right: 15rpx;
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #fff;
+	margin-right: 15rpx;
 }
 
 .progress-text-outside {
-  position: absolute;
-  font-size: 28rpx;
-  font-weight: bold;
-  color: rgba(188, 143, 143, 1);
-  left: 15rpx;
-  top: 50%;
-  transform: translateY(-50%);
+	position: absolute;
+	font-size: 28rpx;
+	font-weight: bold;
+	color: rgba(188, 143, 143, 1);
+	left: 15rpx;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .wheel-result {
-  margin-top: 10rpx;
-  background-color: rgb(230, 201, 201);
-  padding: 16rpx 24rpx;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-  color: rgba(188, 143, 143, 1);
-  text-align: center;
-  min-height: 28rpx;
-  width: 100%;
-  max-width: 280rpx;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
+	margin-top: 10rpx;
+	background-color: rgb(230, 201, 201);
+	padding: 16rpx 24rpx;
+	border-radius: 4rpx;
+	font-size: 28rpx;
+	color: rgba(188, 143, 143, 1);
+	text-align: center;
+	min-height: 28rpx;
+	width: 100%;
+	max-width: 280rpx;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 1;
 }
 
 /* 背景装饰元素 */
 .bg-decoration-circle1 {
-  position: absolute;
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 50%;
-  background: rgba(144, 164, 203, 0.15);
-  top: 120rpx;
-  right: -60rpx;
-  z-index: -1;
-  filter: blur(1rpx);
+	position: absolute;
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 50%;
+	background: rgba(144, 164, 203, 0.15);
+	top: 120rpx;
+	right: -60rpx;
+	z-index: -1;
+	filter: blur(1rpx);
 }
 
 .bg-decoration-circle2 {
-  position: absolute;
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 50%;
-  background: rgba(188, 143, 143, 0.12);
-  top: 240rpx;
-  left: -40rpx;
-  z-index: -1;
-  filter: blur(1rpx);
+	position: absolute;
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	background: rgba(188, 143, 143, 0.12);
+	top: 240rpx;
+	left: -40rpx;
+	z-index: -1;
+	filter: blur(1rpx);
 }
 
 .bg-decoration-square1 {
-  position: absolute;
-  width: 100rpx;
-  height: 100rpx;
-  background: rgba(74, 144, 226, 0.08);
-  transform: rotate(45deg);
-  bottom: 320rpx;
-  right: -30rpx;
-  z-index: -1;
-  filter: blur(1rpx);
+	position: absolute;
+	width: 100rpx;
+	height: 100rpx;
+	background: rgba(74, 144, 226, 0.08);
+	transform: rotate(45deg);
+	bottom: 320rpx;
+	right: -30rpx;
+	z-index: -1;
+	filter: blur(1rpx);
 }
 
 .bg-decoration-square2 {
-  position: absolute;
-  width: 80rpx;
-  height: 80rpx;
-  background: rgba(128, 102, 220, 0.1);
-  bottom: 180rpx;
-  left: -20rpx;
-  z-index: -1;
-  filter: blur(1rpx);
+	position: absolute;
+	width: 80rpx;
+	height: 80rpx;
+	background: rgba(128, 102, 220, 0.1);
+	bottom: 180rpx;
+	left: -20rpx;
+	z-index: -1;
+	filter: blur(1rpx);
 }
 
 .bg-decoration-rect {
-  position: absolute;
-  width: 140rpx;
-  height: 80rpx;
-  background: rgba(144, 238, 144, 0.1);
-  transform: rotate(-15deg);
-  top: 400rpx;
-  right: 40rpx;
-  z-index: -1;
-  filter: blur(1rpx);
+	position: absolute;
+	width: 140rpx;
+	height: 80rpx;
+	background: rgba(144, 238, 144, 0.1);
+	transform: rotate(-15deg);
+	top: 400rpx;
+	right: 40rpx;
+	z-index: -1;
+	filter: blur(1rpx);
 }

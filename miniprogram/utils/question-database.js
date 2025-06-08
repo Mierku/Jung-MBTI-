@@ -227,10 +227,10 @@ function calculateScores(answers) {
 
 	// 根据排名应用不同的乘数
 	const multipliers = {
-		[axisRanking[0]]: 1.2, // 排第一的维度乘以1.2
-		[axisRanking[1]]: 1.1, // 排第二的维度乘以1.1
+		[axisRanking[0]]: 1.1, // 排第一的维度乘以1.2
+		[axisRanking[1]]: 1.05, // 排第二的维度乘以1.1
 		[axisRanking[2]]: 1.0, // 排第三的维度乘以1.0
-		[axisRanking[3]]: 0.9, // 排第四的维度乘以0.9
+		[axisRanking[3]]: 0.95, // 排第四的维度乘以0.9
 	};
 
 	// 应用乘数到对应的认知功能
@@ -352,6 +352,31 @@ function determineMBTIType(scoreResult) {
 		// 如果第一名和第二名分数接近，比较它们对应的辅助功能
 		const firstDominant = topFunction.func;
 		const secondDominant = secondFunction.func;
+
+		// 新增：检查前两个功能是否正好对应某个MBTI类型的主导和辅助功能
+		// 如果是，则直接判定为该类型
+		const dominantAuxPair = `${firstDominant}-${secondDominant}`;
+		const mbtiType = typeByFunctions[dominantAuxPair];
+
+		if (mbtiType) {
+			console.log(
+				`前两位功能 ${firstDominant}(${scores[firstDominant]}) 和 ${secondDominant}(${scores[secondDominant]}) 分数接近，` +
+					`且匹配MBTI类型 ${mbtiType} 的主导-辅助功能对，直接判定为 ${mbtiType}`
+			);
+			return mbtiType;
+		}
+
+		// 检查反向组合（辅助-主导）是否匹配某个MBTI类型
+		const auxiliaryDomPair = `${secondDominant}-${firstDominant}`;
+		const reverseMbtiType = typeByFunctions[auxiliaryDomPair];
+
+		if (reverseMbtiType) {
+			console.log(
+				`前两位功能 ${firstDominant}(${scores[firstDominant]}) 和 ${secondDominant}(${scores[secondDominant]}) 分数接近，` +
+					`且反向匹配MBTI类型 ${reverseMbtiType} 的辅助-主导功能对，直接判定为 ${reverseMbtiType}`
+			);
+			return reverseMbtiType;
+		}
 
 		const firstPossibleAux = possibleAuxiliaryFunctions[firstDominant] || [];
 		const secondPossibleAux = possibleAuxiliaryFunctions[secondDominant] || [];

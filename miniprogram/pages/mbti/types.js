@@ -132,6 +132,9 @@ Page({
 	// 查看MBTI类型详情
 	viewTypeDetail(e) {
 		const { type } = e.currentTarget.dataset;
+
+		// 注意：仅仅通过URL参数传递类型，不设置全局变量
+		// 这样可以确保不会影响用户的实际测试结果
 		wx.navigateTo({
 			url: "/pages/report-detail/report-detail?type=" + type,
 		});
@@ -144,6 +147,10 @@ Page({
 
 	// 开始测试
 	startTest() {
+		// 在开始新测试前，清除之前的测试结果缓存
+		app.globalData.mbtiResult = null;
+		wx.removeStorageSync("mbtiResult");
+
 		wx.navigateTo({
 			url: "/pages/test/test",
 		});

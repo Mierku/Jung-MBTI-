@@ -1,0 +1,99 @@
+<!--
+此文件为开发者工具生成，生成时间: 2025/6/8下午5:51:07
+使用方法：
+在 E:\work\try\mbti\miniprogram\pages\mbti\index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+```
+
+在 E:\work\try\mbti\miniprogram\pages\mbti\index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="page-container sk-image">
+      <view class="bg-decoration-circle1"></view>
+      <view class="bg-decoration-circle2"></view>
+      <view class="bg-decoration-square1"></view>
+      <view class="bg-decoration-square2"></view>
+      <view class="bg-decoration-rect"></view>
+      <view class="header sk-transparent sk-text-14-2857-679 sk-text">MBTI测试</view>
+      <view class="card-container">
+        <view class="theory-card">
+          <view class="theory-decoration-circle"></view>
+          <view class="theory-decoration-square"></view>
+          <view class="theory-title sk-transparent sk-text-14-2857-261 sk-text" style="background-position-x: 50%;">关于测试</view>
+          <view class="theory-content">
+            <view class="theory-text sk-transparent sk-text-17-7419-959 sk-text">本测试基于荣格八维心理学原理，严格遵循认知功能理论设计。通过72道精心设计的量表题目，结合科学的权重计分系统，精准测量出您的MBTI类型与八大认知功能的使用倾向分值。相比传统MBTI测试，结果更贴近荣格原理，展现更立体全面的MBTI人格画像，帮助您深入理解自我。所有数据均在本地存储，确保安全且私密。</view>
+          </view>
+        </view>
+        <view class="lucky-wheel-container">
+          <view class="lucky-wheel">
+            <view class="lucky-decoration-circle"></view>
+            <view class="lucky-decoration-square"></view>
+            <view class="wheel-title sk-transparent sk-text-14-2857-991 sk-text" style="background-position-x: 50%;">今日幸运</view>
+            <view class="wheel-content">
+              <view class="progress-bar-container">
+                <view class="progress-bar-bg">
+                  <view class="progress-bar" style="width: 94%">
+                    <text class="progress-text sk-transparent sk-text-14-2857-522 sk-text">94%</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="wheel-result">
+              <text class="sk-transparent sk-text-14-2857-432 sk-text" style="background-position-x: 50%;">今日宜与家人交流</text>
+            </view>
+          </view>
+        </view>
+        <view class="first-section">
+          <view class="test-card card-wrapper types-card sk-pseudo sk-pseudo-circle">
+            <view class="card-content">
+              <view class="card-title sk-transparent sk-text-14-2857-558 sk-text">MBTI 专业测试</view>
+              <view class="card-subtitle sk-transparent sk-text-14-2857-484 sk-text">准确了解你的性格类型</view>
+            </view>
+          </view>
+          <view class="test-card card-wrapper types-card sk-pseudo sk-pseudo-circle">
+            <view class="card-content">
+              <view class="card-title sk-transparent sk-text-14-2857-900 sk-text">MBTI 面包体</view>
+              <view class="card-subtitle sk-transparent sk-text-14-2857-262 sk-text">探索全部性格类型特点</view>
+            </view>
+          </view>
+          <view class="test-card card-wrapper types-card sk-pseudo sk-pseudo-circle">
+            <view class="card-content">
+              <view class="card-title sk-transparent sk-text-14-2857-34 sk-text">缘分配对</view>
+              <view class="card-subtitle sk-transparent sk-text-14-2857-6 sk-text">分析两种MBTI类型的匹配度</view>
+            </view>
+          </view>
+          <view class="test-card card-wrapper types-card sk-pseudo sk-pseudo-circle">
+            <view class="card-content">
+              <view class="card-title sk-transparent sk-text-14-2857-643 sk-text">关系网</view>
+              <view class="card-subtitle sk-transparent sk-text-14-2857-550 sk-text">组建自己的MBTI关系圈</view>
+            </view>
+          </view>
+          <view class="test-card card-wrapper types-card sk-pseudo sk-pseudo-circle">
+            <view class="card-content">
+              <view class="card-title sk-transparent sk-text-14-2857-130 sk-text">心理健康</view>
+              <view class="card-subtitle sk-transparent sk-text-14-2857-879 sk-text">根据MBTI类型获取心理调适建议</view>
+            </view>
+          </view>
+          <view class="test-card card-wrapper types-card sk-pseudo sk-pseudo-circle">
+            <view class="card-content">
+              <view class="card-title sk-transparent sk-text-14-2857-544 sk-text">我的报告</view>
+              <view class="card-subtitle sk-transparent sk-text-14-2857-686 sk-text">查看所有测试历史记录</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="disclaimer">
+        <text class="sk-transparent sk-text-0-0000-415 sk-text" style="background-position-x: 50%;">本应用承诺所有功能完全免费</text>
+      </view>
+    </view>
+  </view>
+</template>
